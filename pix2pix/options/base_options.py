@@ -71,6 +71,8 @@ class BaseOptions():
         parser.add_argument('--R20', action='store_true')
         parser.add_argument('--Final', action='store_true')
         parser.add_argument('--colorize_results', action='store_true')
+        parser.add_argument('--llimit', type=int, default=0)
+        parser.add_argument('--rlimit', type=int, default=-1)
         parser.add_argument('--max_res', type=float, default=np.inf)
 
         self.initialized = True
