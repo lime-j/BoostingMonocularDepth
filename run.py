@@ -39,7 +39,7 @@ srlnet = None
 leresmodel = None
 factor = None
 whole_size_threshold = 3000  # R_max from the paper
-GPU_threshold = 1600 - 32 # Limit for the GPU (NVIDIA RTX 2080), can be adjusted 
+GPU_threshold = 2400 - 32 # Limit for the GPU (NVIDIA RTX 2080), can be adjusted 
 
 # MAIN PART OF OUR METHOD
 def run(dataset, option):
@@ -546,6 +546,8 @@ if __name__ == "__main__":
     parser.add_argument('--R0', action='store_true')
     parser.add_argument('--R20', action='store_true')
     parser.add_argument('--Final', action='store_true')
+    parser.add_argument('--l_limit', type=int, default=0)
+    parser.add_argument('--r_limit', type=int, default=-1)
     parser.add_argument('--max_res', type=float, default=np.inf)
 
     # Check for required input
@@ -574,7 +576,7 @@ if __name__ == "__main__":
         assert False, 'depthNet can only be 0,1 or 2'
 
     # Create dataset from input images
-    dataset_ = ImageDataset(option_.data_dir, 'test')
+    dataset_ = ImageDataset(option_.data_dir, 'test', opt.l_limit, opt.r_limit)
 
     # Run pipeline
     run(dataset_, option_)
