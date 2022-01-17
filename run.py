@@ -576,7 +576,7 @@ if __name__ == "__main__":
         assert False, 'depthNet can only be 0,1 or 2'
 
     # Create dataset from input images
-    dataset_ = ImageDataset(option_.data_dir, 'test', opt.l_limit, opt.r_limit)
+    dataset_ = ImageDataset(option_.data_dir, 'test', option_.l_limit, option_.r_limit)
 
     # Run pipeline
     run(dataset_, option_)
