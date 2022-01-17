@@ -39,7 +39,7 @@ srlnet = None
 leresmodel = None
 factor = None
 whole_size_threshold = 3000  # R_max from the paper
-GPU_threshold = 2400 - 32 # Limit for the GPU (NVIDIA RTX 2080), can be adjusted 
+GPU_threshold = 3200 - 32 # Limit for the GPU (NVIDIA RTX 2080), can be adjusted 
 
 # MAIN PART OF OUR METHOD
 def run(dataset, option):
