@@ -202,14 +202,20 @@ class ImageandPatchs:
 
 
 class ImageDataset:
-    def __init__(self, root_dir, subsetname):
+    def __init__(self, root_dir, subsetname, start=0, end=-1):
         self.dataset_dir = root_dir
         self.subsetname = subsetname
         self.rgb_image_dir = root_dir
         self.files = sorted(os.listdir(self.rgb_image_dir))
-
+        self.start = start
+        self.end = (len(self.files) - 1 if end is -1 else end)
+    
+    @staticmethod
+    def min(x, y): 
+        return x if x < y else y
+    
     def __len__(self):
-        return len(self.files)
+        return min(self.end - self.start, len(self.files))
 
     def __getitem__(self, index):
-        return Images(self.rgb_image_dir, self.files, index)
+        return Images(self.rgb_image_dir, self.files, index + self.start)
